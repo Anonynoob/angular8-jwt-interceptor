@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validator, Validators } from '@angular/forms';
   providedIn: 'root'
 })
 export class EmployeeService {
+  constructor() { }
   form: FormGroup = new FormGroup({
     $key: new FormControl(null),
     fullName: new FormControl('', Validators.required),
@@ -15,5 +16,18 @@ export class EmployeeService {
     hireDate: new FormControl(''),
     isPermanent: new FormControl(false)
   });
-  constructor() { }
+
+  initFormGroup(){
+    this.form.setValue({
+      $key: null,
+      fullName: '',
+      email: '',
+      mobile: '',
+      city: '',
+      gender: 1,
+      department: 0,
+      hireDate: '',
+      isPermanent: false
+    });
+  }
 }

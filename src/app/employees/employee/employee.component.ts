@@ -18,6 +18,7 @@ export class EmployeeComponent implements OnInit {
 
   onClear() {
     this.service.form.reset();
+    this.service.initFormGroup();
   }
 
   get name() { return this.service.form.controls['fullName'].value; }
