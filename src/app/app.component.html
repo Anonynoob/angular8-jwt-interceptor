@@ -1,0 +1,38 @@
+<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+  <div class="navbar-nav">
+    <a class="nav-item nav-link" routerLink="/">Home</a>
+    <a class="nav-item nav-link" routerLink="/products">Products</a>
+    <a class="nav-item nav-link" routerLink="/employee">Employees</a>
+    <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    <form>
+      <mat-form-field>
+        <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
+          [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+  </div>
+</nav>
+
+<!-- main app container -->
+<div>
+
+</div>
+<div [hidden]="!alertStatus">
+  <app-alert></app-alert>
+</div>
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 offset-md-0">
+
+        <router-outlet></router-outlet>
+
+    </div>
+  </div>
+</div>
