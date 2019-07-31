@@ -1,11 +1,21 @@
 <!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-  <div class="navbar-nav">
-    <a class="nav-item nav-link" routerLink="/">Home</a>
-    <a class="nav-item nav-link" routerLink="/products">Products</a>
-    <a class="nav-item nav-link" routerLink="/employee">Employees</a>
-    <a class="nav-item nav-link" (click)="logout()">Logout</a>
-    <form>
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark" *ngIf="currentUser">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="navbar-nav ml-auto">
+      <a class="nav-item nav-link" routerLink="/">Home</a>
+      <a class="nav-item nav-link" routerLink="/products">Products</a>
+      <a class="nav-item nav-link" routerLink="/employee">Employees</a>
+      <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <!-- <form class="form-inline">
       <mat-form-field>
         <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
           [matAutocomplete]="auto">
@@ -15,7 +25,7 @@
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
-    </form>
+    </form> -->
   </div>
 </nav>
 
@@ -33,6 +43,6 @@
 
         <router-outlet></router-outlet>
 
+      </div>
     </div>
   </div>
-</div>

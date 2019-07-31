@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from '@_services';
+import { EmployeeService, AlertService } from '@_services';
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
@@ -11,25 +11,73 @@ export class EmployeeComponent implements OnInit {
     { id: 2, value: 'Dep 2' },
     { id: 3, value: 'Dep 3' },
   ];
-  constructor(private service: EmployeeService) { }
+  constructor(private service: EmployeeService,
+    private alert: AlertService) {
+    this.service.initForm();
+    // this.service.initFormGroupWControl();
+
+  }
 
   ngOnInit() {
   }
 
   onClear() {
-    this.service.form.reset();
-    this.service.initFormGroup();
+    this.alert.successSnack('::Submitted successfully');
+    this.employeeForm.reset({ fullName: 'asd', gender: '1' })
+
+    // this.service.initFormGroup();
   }
 
-  get name() { return this.service.form.controls['fullName'].value; }
 
-  setName() { this.service.form.controls['fullName'].setValue(''); }
+  onSubmitted() {
+    const obj = {
+      fullName: this.name,
+      email: this.email,
+      mobile: this.mobile.value,
+      city: this.city.value,
+      gender: this.gender.value,
+      department: this.department.value,
+      hireDate: this.hireDate.value,
+      isPermanent: this.isPermanent.value
+    }
+    console.log(this.employeeForm.value);
+    this.employeeForm.reset({fullName: 'asd', gender: '1'})
+    this.alert.successSnack('::Submitted successfully');
+  }
 
-  get email() { return this.service.form.controls['email'].value; }
+  get employeeForm() {
+    return this.service.form;
+  }
 
-  setEmail() { this.service.form.controls['email'].setValue(''); }
 
-  get mobile() {return this.service.form.controls['mobile'].value;}
+  get name() { return this.employeeForm.get('fullName').value; }
 
-  setMobile() {return this.service.form.controls['mobile'].setValue('');}
+  setName(val: String = '') { this.employeeForm.get('fullName').setValue(val); }
+
+  get email() { return this.employeeForm.get('email').value; }
+
+  setEmail() { this.employeeForm.get('email').setValue(''); }
+
+  get mobile() { return this.employeeForm.get('mobile'); }
+
+  setMobile(val: number = 0) { return this.employeeForm.get('mobile').setValue(val); }
+
+  get city() { return this.employeeForm.get('city'); }
+
+  setCity(val: string = '') { this.employeeForm.get('city').setValue(val); }
+
+  get gender() { return this.employeeForm.get('gender'); }
+
+  // setGender(val: number)
+
+  get department() { return this.employeeForm.get('department'); }
+
+  // setDepartment()
+
+  get hireDate() { return this.employeeForm.get('hireDate'); }
+
+  // setHireDate()
+
+  get isPermanent() { return this.employeeForm.get('isPermanent'); }
+
 }

@@ -20,6 +20,10 @@ import { MatDatepickerModule } from '@angular/material';
     Material.MatDatepickerModule,
     Material.MatNativeDateModule,
     Material.MatCheckboxModule,
+    Material.MatSnackBarModule,
+    Material.MatTableModule,
+    Material.MatPaginatorModule,
+    Material.MatSortModule,
     CommonModule
   ],
   exports: [
@@ -36,6 +40,10 @@ import { MatDatepickerModule } from '@angular/material';
     Material.MatDatepickerModule,
     Material.MatNativeDateModule,
     Material.MatCheckboxModule,
+    Material.MatSnackBarModule,
+    Material.MatTableModule,
+    Material.MatPaginatorModule,
+    Material.MatSortModule,
   ]
 })
 export class MaterialModule { }

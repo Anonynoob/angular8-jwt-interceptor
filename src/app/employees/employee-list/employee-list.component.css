@@ -1,0 +1,23 @@
+table{
+  width: 100%;
+  /* table-layout: fixed; */
+}
+
+th {
+  font-size: 18px;
+  font-weight: bold;
+
+}
+
+
+/* tr:hover{
+  background-color: gainsboro;
+} */
+
+.hide{
+  display: none;
+}
+
+mat-footer-row mat-footer-cell{
+  justify-content: center;
+}

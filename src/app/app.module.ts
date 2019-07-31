@@ -21,7 +21,8 @@ import { MaterialModule } from './_modules/material.module';
 import { FormsModule } from '@angular/forms';
 import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeComponent } from './employees/employee/employee.component';
-import { EmployeeService } from '@_services'
+import { EmployeeService } from '@_services';
+import { EmployeeListComponent } from './employees/employee-list/employee-list.component'
 @NgModule({
     imports: [
         BrowserModule,
@@ -43,7 +44,8 @@ import { EmployeeService } from '@_services'
         ProductComponent,
         ProductEditComponent,
         EmployeesComponent,
-        EmployeeComponent
+        EmployeeComponent,
+        EmployeeListComponent
     ],
     providers: [
       EmployeeService,
