@@ -22,7 +22,8 @@ import { FormsModule } from '@angular/forms';
 import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeComponent } from './employees/employee/employee.component';
 import { EmployeeService } from '@_services';
-import { EmployeeListComponent } from './employees/employee-list/employee-list.component'
+import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
+import { EmployeeEditComponent } from './employees/employee-edit/employee-edit.component'
 @NgModule({
     imports: [
         BrowserModule,
@@ -45,7 +46,8 @@ import { EmployeeListComponent } from './employees/employee-list/employee-list.c
         ProductEditComponent,
         EmployeesComponent,
         EmployeeComponent,
-        EmployeeListComponent
+        EmployeeListComponent,
+        EmployeeEditComponent
     ],
     providers: [
       EmployeeService,

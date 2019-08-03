@@ -6,7 +6,7 @@
         <!-- Full Name -->
         <mat-form-field>
           <input formControlName="fullName" matInput placeholder="Full Name*">
-          <button mat-button *ngIf="name" matSuffix mat-icon-button aria-label="Clear" (click)="setName()">
+          <button mat-button *ngIf="name.value" matSuffix mat-icon-button aria-label="Clear" (click)="setName()">
             <mat-icon>close</mat-icon>
           </button>
           <mat-error *ngIf="(service.form.touched||service.form.dirty)">This field is mandatory</mat-error>
@@ -14,7 +14,7 @@
         <!-- Email -->
         <mat-form-field>
           <input formControlName="email" matInput placeholder="Email*">
-          <button mat-button *ngIf="email" matSuffix mat-icon-button aria-label="Clear" (click)="setEmail()">
+          <button mat-button *ngIf="email.value" matSuffix mat-icon-button aria-label="Clear" (click)="setEmail()">
             <mat-icon>close</mat-icon>
           </button>
           <mat-error>Invalid email address.</mat-error>
@@ -59,8 +59,8 @@
         <mat-form-field>
           <mat-select formControlName="department" aria-placeholder="Department">
             <mat-option>None</mat-option>
-            <ng-container *ngFor="let department of departments">
-              <mat-option value="{{department.id}}">{{department.value}}</mat-option>
+            <ng-container *ngFor="let dep of departments">
+              <mat-option value="{{dep.id}}">{{dep.name}}</mat-option>
             </ng-container>
 
           </mat-select>
@@ -76,9 +76,9 @@
           <mat-checkbox formControlName="isPermanent">Permanent Employee</mat-checkbox>
         </div>
         <div class="button-row">
-          <button mat-raised-button color="primary" (click)="onSubmitted()" [disabled]=employeeForm.invalid>Submit</button>
-          <button mat-raised-button color="warn"
-            (click)="onClear()">Clear</button>
+          <button mat-raised-button color="primary" (click)="onSubmitted()"
+            [disabled]=employeeForm.invalid>Submit</button>
+          <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
         </div>
       </div>
 

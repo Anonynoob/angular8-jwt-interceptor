@@ -1,0 +1,20 @@
+<div class="form-group" [formGroup]="empEditForm">
+  <mat-form-field>
+    <input matInput formControlName="fullName" placeholder="Full Name" value="name.value">
+    <button mat-button mat-suffix mat-icon-button *ngIf="name.value" aria-label="Clear" (click)="setName()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-error *ngIf="form.touched || form.dirty">This field is mandatory</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+      <input matInput placeholder="Email" value="email.value" formControlName="email">
+      <button mat-icon-button mat-suffix mat-button *ngIf="email.value" aria-label="Clear" (click)="setEmail()">
+          <mat-icon>close</mat-icon></button>
+    <mat-error>Invalid Email Address.</mat-error>
+  </mat-form-field>
+  
+  <mat-form-field>
+      <input matInput placeholder="label" value="value">
+  </mat-form-field>
+</div>

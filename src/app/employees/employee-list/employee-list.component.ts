@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { EmployeeService } from '@_services';
 import { Employee } from '@_models';
-
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
+
+import {EmployeeEditComponent } from '../employee-edit/employee-edit.component';
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
@@ -16,7 +18,9 @@ export class EmployeeListComponent implements OnInit {
   @ViewChild(MatSort, { static: false }) sort: MatSort;
   @ViewChild(MatPaginator, {static:false}) paginator: MatPaginator;
 
-  constructor(private service: EmployeeService) { }
+  constructor(private service: EmployeeService,
+    private route: Router,
+    private router: ActivatedRoute) { }
 
   ngOnInit() {
     let array = this.service.getFakeEmployees();
@@ -30,6 +34,17 @@ export class EmployeeListComponent implements OnInit {
     });
 
     // console.log(this.data);
+    
   }
 
+  onEdit(data) {
+    // const sf = JSON.stringify(data);
+    // console.log(JSON.parse(sf).fullName);
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        "employee": data.fullName
+      }
+    };
+    this.service.setEmp(data);
+    this.route.navigate(['/edit'])}
 }
